@@ -137,6 +137,9 @@ importers:
       '@ember/app-tsconfig':
         specifier: ^2.0.0
         version: 2.0.0
+      '@embroider/core':
+        specifier: ^4.4.2
+        version: 4.4.2(@glint/template@1.7.7)
       '@glint/ember-tsc':
         specifier: ^1.7.5
         version: 1.7.5(ember-source@7.0.0(@glimmer/component@2.1.1))(typescript@6.0.3)

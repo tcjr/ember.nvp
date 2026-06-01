@@ -50,8 +50,8 @@ interface Config {
   };
 }
 
-export function ember(nvpConfig: Config) {
-  const babelConfigFile = resolve(join(process.cwd(), "./babel.config.mjs"));
+export function ember(nvpConfig: Config = {}) {
+  const babelConfigFile = resolve(join(process.cwd(), "./babel.config.js"));
   const defaultEnv = { mode: process.env.NODE_ENV || "development" };
 
   /*
@@ -114,11 +114,11 @@ export function ember(nvpConfig: Config) {
 
 const MODE_DEV = "development";
 
-function isDev(mode) {
+function isDev(mode: string) {
   return mode === MODE_DEV;
 }
 
-function applyConfig(viteConfig: ResolvedConfig, env, nvpConfig: Config) {
+function applyConfig(viteConfig: ResolvedConfig, env: ConfigEnv, nvpConfig: Config) {
   if (isDev(env.mode)) {
     return dev(viteConfig, nvpConfig);
   }
