@@ -57,7 +57,7 @@ const counts = {
 export function maybeBabel(options: { parallel?: boolean; configFile: string; env: any }) {
   const { env, parallel, ...restOptions } = options;
   const original = (() => {
-    const babelPath = resolve(join(process.cwd(), "./babel.config.mjs"));
+    const babelPath = resolve(join(process.cwd(), "./babel.config.js"));
 
     return babel({
       babelHelpers: "runtime",
@@ -69,40 +69,53 @@ export function maybeBabel(options: { parallel?: boolean; configFile: string; en
     });
   })();
 
+  /**
+   * In @rollup/plugin-babel v7+, the `transform` hook is the object form
+   * `{ filter, handler }` rather than a plain function. Normalize to the
+   * underlying handler so we can invoke it directly.
+   */
+  const originalTransform = (
+    typeof original.transform === "function" ? original.transform : original.transform?.handler
+  )!;
+
   const babelMacros = new Set(babelRequiredImports);
   if (env.mode === "development") {
     babelMacros.delete("@ember/debug");
   }
 
-  console.log(original);
-
-  async function doTransform(code, id) {
+  async function doTransform(this: any, code: string, id: string) {
     counts.total++;
 
     const ext = id.split(".").at(-1);
-    const lang = ext === "gjs" ? "js" : ext === "gts" ? "ts" : ext;
+    const lang = (ext === "gjs" ? "js" : ext === "gts" ? "ts" : ext) as
+      | "js"
+      | "ts"
+      | "jsx"
+      | "tsx"
+      | "dts"
+      | undefined;
 
     let needsBabel = false;
 
     const estree = await oxcParse(id, code, { lang });
 
     walk(
-      estree.program,
+      estree.program as any,
       /* state */ {},
       {
-        Decorator(_node, { stop }) {
+        Decorator(_node: any, { stop }: any) {
           needsBabel = true;
           counts.why.decorators++;
           stop();
         },
-        MemberExpression(node, { stop }) {
+        MemberExpression(node: any, { stop }: any) {
           if (node.property?.name === "formatMessage" && node.object?.name === "intl") {
             needsBabel = true;
             counts.why.formatMessage++;
             stop();
           }
         },
-        ImportDeclaration(node, { stop }) {
+        ImportDeclaration(node: any, { stop }: any) {
           const value = node.source.value;
           if (babelMacros.has(value)) {
             needsBabel = true;
@@ -129,7 +142,7 @@ export function maybeBabel(options: { parallel?: boolean; configFile: string; en
     if (needsBabel) {
       counts.babel++;
 
-      const result = await original.transform.call(this, code, id);
+      const result = await originalTransform.call(this, code, id);
 
       return result;
     }
@@ -191,7 +204,7 @@ export function maybeBabel(options: { parallel?: boolean; configFile: string; en
         // 	include: [/initializeRuntimeMacrosConfig/, /precompileTemplate/],
         // },
       },
-      handler(code, id) {
+      handler(this: any, code: string, id: string) {
         try {
           return doTransform.call(this, code, id);
         } catch (e) {
