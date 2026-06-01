@@ -1,39 +1,22 @@
 {
   "solution": {
     "ember.nvp": {
-      "impact": "minor",
-      "oldVersion": "0.2.1",
-      "newVersion": "0.3.0",
+      "impact": "patch",
+      "oldVersion": "0.2.0",
+      "newVersion": "0.2.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         },
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./package.json"
-    },
-    "@nullvoxpopuli/ember-vite": {
-      "impact": "minor",
-      "oldVersion": "1.0.0",
-      "newVersion": "1.1.0",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        }
-      ],
-      "pkgJSONPath": "./packages/vite/package.json"
     }
   },
-  "description": "## Release (2026-06-01)\n\n* ember.nvp 0.3.0 (minor)\n* @nullvoxpopuli/ember-vite 1.1.0 (minor)\n\n#### :rocket: Enhancement\n* `ember.nvp`, `@nullvoxpopuli/ember-vite`\n  * [#32](https://github.com/NullVoxPopuli/ember.nvp/pull/32) Add fast vite plugin ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n* `ember.nvp`\n  * [#24](https://github.com/NullVoxPopuli/ember.nvp/pull/24) Add .gitignore to git layer ([@tcjr](https://github.com/tcjr))\n\n#### :bug: Bug Fix\n* `@nullvoxpopuli/ember-vite`, `ember.nvp`\n  * [#35](https://github.com/NullVoxPopuli/ember.nvp/pull/35) Fix CI failures on the fast vite plugin PR ([@NullVoxPopuli-ai-agent](https://github.com/NullVoxPopuli-ai-agent))\n\n#### Committers: 3\n- @NullVoxPopuli's reduced-access machine account for AI usage ([@NullVoxPopuli-ai-agent](https://github.com/NullVoxPopuli-ai-agent))\n- Tom Carter ([@tcjr](https://github.com/tcjr))\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
+  "description": "## Release (2026-05-15)\n\n* ember.nvp 0.2.1 (patch)\n\n#### :bug: Bug Fix\n* `ember.nvp`\n  * [#29](https://github.com/NullVoxPopuli/ember.nvp/pull/29) Fix production vite build broken by setTesting in app/config.ts ([@Copilot](https://github.com/apps/copilot-swe-agent))\n\n#### :house: Internal\n* `ember.nvp`\n  * [#31](https://github.com/NullVoxPopuli/ember.nvp/pull/31) Update release-plan ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 2\n- Copilot [Bot] ([@copilot-swe-agent](https://github.com/apps/copilot-swe-agent))\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
