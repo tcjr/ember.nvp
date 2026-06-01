@@ -1,25 +1,5 @@
 # Changelog
 
-## Release (2026-06-01)
-
-* ember.nvp 0.3.0 (minor)
-* @nullvoxpopuli/ember-vite 1.1.0 (minor)
-
-#### :rocket: Enhancement
-* `ember.nvp`, `@nullvoxpopuli/ember-vite`
-  * [#32](https://github.com/NullVoxPopuli/ember.nvp/pull/32) Add fast vite plugin ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
-* `ember.nvp`
-  * [#24](https://github.com/NullVoxPopuli/ember.nvp/pull/24) Add .gitignore to git layer ([@tcjr](https://github.com/tcjr))
-
-#### :bug: Bug Fix
-* `@nullvoxpopuli/ember-vite`, `ember.nvp`
-  * [#35](https://github.com/NullVoxPopuli/ember.nvp/pull/35) Fix CI failures on the fast vite plugin PR ([@NullVoxPopuli-ai-agent](https://github.com/NullVoxPopuli-ai-agent))
-
-#### Committers: 3
-- @NullVoxPopuli's reduced-access machine account for AI usage ([@NullVoxPopuli-ai-agent](https://github.com/NullVoxPopuli-ai-agent))
-- Tom Carter ([@tcjr](https://github.com/tcjr))
-- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
-
 ## Release (2026-05-15)
 
 * ember.nvp 0.2.1 (patch)
