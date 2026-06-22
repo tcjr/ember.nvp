@@ -24,7 +24,7 @@ export default {
 
     let initOk = initGit(project.directory);
     if (initOk) {
-      let gitIgnorePath = join(import.meta.dirname, "files/.gitignore");
+      let gitIgnorePath = join(import.meta.dirname, "files/gitignore");
       let targetPath = join(project.directory, ".gitignore");
 
       await cp(gitIgnorePath, targetPath, { force: true });
