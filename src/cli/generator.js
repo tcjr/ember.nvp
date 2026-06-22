@@ -8,7 +8,7 @@ import { hasGit } from "#utils/git.js";
  * Generate project files by running layer functions
  *
  * @param {import('#utils/project.js').Project} project
- * @param {'replace' | 'update'} [replaceOrUpdate]
+ * @param {string} [replaceOrUpdate]
  */
 export async function generateProject(project, replaceOrUpdate) {
   if (replaceOrUpdate === "replace") {

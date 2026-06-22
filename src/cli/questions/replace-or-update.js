@@ -1,8 +1,6 @@
 import * as p from "@clack/prompts";
 
-import { join } from "node:path";
 import { answers, printArgInUse } from "#args";
-import { cwd } from "#utils/cwd.js";
 import { existsSync } from "node:fs";
 
 /**
@@ -17,7 +15,7 @@ function isValid(value) {
 }
 
 /**
- * @param {string} name -- the projectName
+ * @param {string} projectPath -- the path the project will be generated in
  */
 export async function askReplaceOrUpdate(projectPath) {
   if (!existsSync(projectPath)) {
