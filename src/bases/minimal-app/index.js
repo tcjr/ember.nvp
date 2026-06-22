@@ -106,7 +106,11 @@ async function upgradeDependencies(project) {
   let existing = await packageJson.read(project.directory);
 
   await packageJson.modify(async (json) => {
-    Object.assign(json.dependencies, await getLatest(existing.dependencies));
-    Object.assign(json.devDependencies, await getLatest(existing.devDependencies));
+    if (json.dependencies) {
+      Object.assign(json.dependencies, await getLatest(existing.dependencies));
+    }
+    if (json.devDependencies) {
+      Object.assign(json.devDependencies, await getLatest(existing.devDependencies));
+    }
   }, project.directory);
 }
