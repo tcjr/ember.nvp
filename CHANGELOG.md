@@ -2,6 +2,18 @@
 
 ## Release (2026-06-22)
 
+* ember.nvp 0.2.6 (patch)
+* @nullvoxpopuli/ember-vite 1.0.3 (patch)
+
+#### :bug: Bug Fix
+* `@nullvoxpopuli/ember-vite`, `ember.nvp`
+  * [#46](https://github.com/NullVoxPopuli/ember.nvp/pull/46) compile ts authored packages ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
+## Release (2026-06-22)
+
 * ember.nvp 0.2.5 (patch)
 
 #### :bug: Bug Fix
