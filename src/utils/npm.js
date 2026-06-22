@@ -38,7 +38,7 @@ export async function getLatest(deps) {
       if (needsLocalLink && dep === "@nullvoxpopuli/ember-vite") {
         version = "link:" + resolve(join(import.meta.dirname, "../../packages/vite"));
       } else {
-        if (range == "workspacee:*") {
+        if (range == "workspace:*") {
           range = "latest";
         }
         version = await latestVersion(dep, { version: range });
