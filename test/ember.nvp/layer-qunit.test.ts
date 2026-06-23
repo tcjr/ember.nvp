@@ -27,7 +27,7 @@ describe("layer: qunit", () => {
 
     let install = await execa("pnpm install", { cwd: project.directory, shell: true });
     expect(install.exitCode).toBe(0);
-    
+
     let test = await execa("pnpm test", { cwd: project.directory, shell: true });
     expect(test.exitCode).toBe(0);
   });
