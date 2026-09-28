@@ -4,8 +4,9 @@ import { styleText } from "node:util";
  * Print help text to stdout.
  *
  * @param {Record<string, any>} coreOptions
+ * @param {import('#types').DiscoveredLayer[]} discoveredLayers
  */
-export function printHelp(coreOptions) {
+export function printHelp(coreOptions, discoveredLayers = []) {
   const title = styleText(["bgCyan", "black"], " ember.nvp ");
   console.log(`${title}\n`);
   console.log(`${styleText("bold", "Usage:")} npx ember.nvp [options]\n`);
@@ -29,4 +30,8 @@ export function printHelp(coreOptions) {
     }
     console.log("");
   }
+
+  console.log(styleText("bold", "Available Layers:"));
+  const layerNames = discoveredLayers.map((l) => styleText("cyan", l.name));
+  console.log(`  ${layerNames.join(", ")}`);
 }

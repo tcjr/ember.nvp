@@ -1,5 +1,6 @@
 import * as p from "@clack/prompts";
 import { styleText, parseArgs } from "node:util";
+import { layers as discoveredLayers } from "#layers";
 import { printHelp } from "./help.js";
 
 export const coreOptions = /** @type {const} */ ({
@@ -65,7 +66,7 @@ export const coreOptions = /** @type {const} */ ({
  */
 const isHelpRequested = process.argv.slice(2).some((arg) => arg === "--help" || arg === "-h");
 if (isHelpRequested) {
-  printHelp(coreOptions);
+  printHelp(coreOptions, discoveredLayers);
   process.exit(0);
 }
 
