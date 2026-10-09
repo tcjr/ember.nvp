@@ -1,6 +1,6 @@
 import { originalPositionFor, TraceMap } from "@jridgewell/trace-mapping";
 import { existsSync } from "node:fs";
-import { mkdtemp, mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, readFile, realpath, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { rolldown } from "rolldown";
@@ -38,7 +38,7 @@ async function generate(
   files: Record<string, string>,
   { input = ["index.ts"], plugins = () => [], sourcemap = false }: BuildOptions = {},
 ): Promise<Build> {
-  const dir = await mkdtemp(path.join(tmpdir(), "ember-rolldown-build-"));
+  const dir = await realpath(await mkdtemp(path.join(tmpdir(), "ember-rolldown-build-")));
 
   for (const [relative, source] of Object.entries(files)) {
     const full = path.join(dir, relative);
@@ -347,7 +347,7 @@ describe("emberTransform (full plugin via rolldown)", () => {
   });
 
   it("emits sourcemaps for the specifier rewrite (no SOURCEMAP_BROKEN warnings)", async () => {
-    const dir = await mkdtemp(path.join(tmpdir(), "ember-rolldown-map-"));
+    const dir = await realpath(await mkdtemp(path.join(tmpdir(), "ember-rolldown-map-")));
 
     const files = {
       // index.ts contains a `.gts` specifier, so it goes through the rewrite.
